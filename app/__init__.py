@@ -1,13 +1,9 @@
+from app import routes
 from flask import Flask
-from app.config import Config # `app` here relates to the name of the module
+import os
+from app.config import Config
 
-# This `app` is not related to `app` from line 2
 app = Flask(__name__)
+# app.config.update({'SECRET_KEY': os.environ.get('SECRET_KEY')})
+app.register_blueprint(routes.bp)
 app.config.from_object(Config)
-
-# print(app.config['SECRET_KEY'])
-
-
-@app.route('/')
-def index():
-    return '<h1>Sample App!!!!</h1>'
