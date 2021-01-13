@@ -7,14 +7,13 @@
 </head>
 <body>
   <form method="post" action="/">
-    {{ form.hidden_tag() }}
     {{ form.csrf_token }}
-    {% if errors %}
+    <!-- {% if errors %}
     <p>{{errors}}</p>
-    {% endif %}
+    {% endif %} -->
     <p>
       {{ form.name.label }}
-      {{ form.name(size=200) }}
+      {{ form.name(size=35) }}
     </p>
     <p>
       {{ form.start_date.label }}
@@ -38,7 +37,7 @@
     </p>
     <p>
       {{ form.private.label }}
-      {{ form.private(placeholder="Enter name", size=200) }}
+      {{ form.private() }}
     </p>
     <p>
       {{ form.submit() }}
