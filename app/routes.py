@@ -1,6 +1,8 @@
 from flask import (Blueprint, render_template)
 import os
 import psycopg2
+from app.forms import AppointmentForm
+
 
 CONNECTION_PARAMETERS = {
     "user": os.environ.get("DB_USER"),
@@ -13,6 +15,7 @@ bp = Blueprint('', __name__)
 
 @bp.route("/")
 def main():
+    form = AppointmentForm()
     with psycopg2.connect(**CONNECTION_PARAMETERS) as conn:
         with conn.cursor() as cursor:
             cursor.execute('''
@@ -25,4 +28,4 @@ def main():
             for row in rows:
                 result[row[0]] = dict(zip(["id", "name", "start_datetime", "end_datetime"], row))
             print(result)
-            return render_template('main.html', rows=result)
+            return render_template('main.html', rows=result, form=form)

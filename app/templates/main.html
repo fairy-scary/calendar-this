@@ -6,6 +6,44 @@
   <title>Document</title>
 </head>
 <body>
+  <form method="post" action="/">
+    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
+    {% if errors %}
+    <p>{{errors}}</p>
+    {% endif %}
+    <p>
+      {{ form.name.label }}
+      {{ form.name(size=200) }}
+    </p>
+    <p>
+      {{ form.start_date.label }}
+      {{ form.start_date() }}
+    </p>
+    <p>
+      {{ form.start_time.label }}
+      {{ form.start_time() }}
+    </p>
+    <p>
+      {{ form.end_date.label }}
+      {{ form.end_date() }}
+    </p>
+    <p>
+      {{ form.end_time.label }}
+      {{ form.end_time() }}
+    </p>
+    <p>
+      {{ form.description.label }}
+      {{ form.description() }}
+    </p>
+    <p>
+      {{ form.private.label }}
+      {{ form.private(placeholder="Enter name", size=200) }}
+    </p>
+    <p>
+      {{ form.submit() }}
+    </p>
+  </form>
   <table>
     <thead>
       <tr>
