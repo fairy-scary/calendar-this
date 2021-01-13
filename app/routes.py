@@ -21,5 +21,8 @@ def main():
                 ORDER BY start_datetime;
             ''')
             rows = cursor.fetchall()
-            print(rows)
-            return render_template('main.html', rows=rows)
+            result = {}
+            for row in rows:
+                result[row[0]] = dict(zip(["id", "name", "start_datetime", "end_datetime"], row))
+            print(result)
+            return render_template('main.html', rows=result)

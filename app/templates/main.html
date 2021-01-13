@@ -17,9 +17,9 @@
     <tbody>
       {% for row in rows %}
       <tr>
-        <td>{{row.name}}</td>
-        <td>{{row.start_datetime.strftime("%H:%M")}}</td>
-        <td>{{row.end_datetime.strftime("%H:%M")}}</td>
+        <td>{{rows[row].name}}</td>
+        <td>{{rows[row].start_datetime.strftime("%H:%M")}}</td>
+        <td>{{rows[row].end_datetime.strftime("%H:%M")}}</td>
       </tr>
       {% endfor %}
     </tbody>
